@@ -1,8 +1,10 @@
-# CheLo (Chemical Engineering Dataset Loader) Library
-
-
 
 <div align="center">
+
+<img src="logo.svg" width="300px">
+
+<h2>**Chemical Enginering Dataset Loader (CheLo) Library**</h2>
+
 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Test Status (master)](https://github.com/passalis/chelo/actions/workflows/ci_master.yml/badge.svg)](https://github.com/passalis/chelo/actions/workflows/ci_master.yml)
@@ -10,7 +12,7 @@
 [![codecov](https://codecov.io/github/passalis/chelo/graph/badge.svg?token=BX57HE0KNF)](https://codecov.io/github/passalis/chelo)
 ![PyPI](https://img.shields.io/pypi/v/chelo)
 
-<div>
+</div>
 
 ## Overview
 Loading a dataset is often one of the most challenging parts of building machine learning pipelines, especially for beginners. 
