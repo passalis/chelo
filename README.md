@@ -1,8 +1,10 @@
 # CheLo (Chemical Engineering Dataset Loader) Library
 
 ## Overview
-The CheLo Library is a Python library designed to simplify the exploration of data-driven modeling for students studying chemical engineering and researchers working on related projects. 
-This library provides a standardized framework for accessing, managing, and utilizing chemical engineering datasets for machine learning and statistical analysis.
+Loading a dataset is often one of the most challenging parts of building machine learning pipelines, especially for beginners. 
+The **CheLo** Library is a Python library specifically designed to make machine learning more accessible to chemical engineering students, aiding in their learning journey and supporting researchers working on related projects. 
+By providing an easy to use framework, this library simplifies the exploration of data-driven modeling, empowering users to access, manage, and utilize chemical engineering datasets for machine learning and statistical analysis with ease.
+
 
 ## Key Features
 - **Dataset Standardization**: Unified API for accessing and exploring datasets.
@@ -10,6 +12,11 @@ This library provides a standardized framework for accessing, managing, and util
 - **Preprocessing Tools**: Methods for feature/target selection, statistics, and previewing datasets.
 - **Dataset Management**: Automated downloading, caching, and registry of datasets.
 - **Extensibility**: Abstract base class for easy addition of new datasets.
+
+## Disclaimer
+I am not associated with any of the datasets provided in this library, nor do I host them. 
+The CheLo Library solely provides tools to facilitate the downloading and loading of publicly available datasets to enhance accessibility for educational and research purposes. 
+If you have any concerns, including removal requests or any other inquiries, please feel free to contact [me](https://people.auth.gr/passalis/) directly.
 
 ## Installation
 
@@ -208,5 +215,5 @@ This library is licensed under the MIT License. See the `LICENSE` file for more 
 
 ## Contact
 
-For questions or feedback, please contact [your email or project contact].
+For questions or feedback, please contact [me](https://people.auth.gr/passalis/).
 

@@ -15,7 +15,8 @@ class DatasetDownloader:
         Initialize the downloader with an optional cache directory.
         :param cache_dir: Directory to store downloaded datasets
         """
-        self.cache_dir = cache_dir or os.getenv("CHELO_DATASET_CACHE", os.path.expanduser("~/.chelo_datasets"))
+        user_dir = os.path.expanduser(os.path.join("~", ".chelo_datasets"))
+        self.cache_dir = cache_dir or os.getenv("CHELO_DATASET_CACHE", user_dir)
         os.makedirs(self.cache_dir, exist_ok=True)
 
 
@@ -76,7 +77,7 @@ class DatasetDownloader:
 
         # Verify checksum
         if checksum and not self._verify_checksum(file_path, checksum):
-            raise ValueError(f"Checksum verification failed for '{filename}'.")
+            raise ValueError(f"Checksum verification failed for '{filename}'. Try re-downloading the file. If the issue please open an issue at https://github.com/passalis/chelo")
 
         print(f"File downloaded and saved at '{file_path}'.")
         return file_path
@@ -95,7 +96,7 @@ class DatasetDownloader:
 
 
 
-def extract_file(self, file_path, extract_to=None):
+def extract_file(file_path, extract_to=None):
     """
     Extract a compressed file (.zip or .tar.gz).
     :param file_path: Path to the compressed file.

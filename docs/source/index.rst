@@ -8,6 +8,7 @@ Welcome to chelo’s Documentation!
    introduction
    installation
    usage
+   datasets
    api_reference
    development
    license

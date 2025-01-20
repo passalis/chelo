@@ -1,4 +1,3 @@
-
 class DatasetRegistry:
     """
     A registry to manage available datasets in CheLo
@@ -20,6 +19,7 @@ class DatasetRegistry:
     def list_datasets(cls):
         """
         List all registered datasets.
+
         :return: A list of names of registered datasets.
         """
         return list(cls._datasets.keys())
@@ -28,6 +28,7 @@ class DatasetRegistry:
     def get_dataset(cls, name, **kwargs):
         """
         Retrieve an instance of the specified dataset by name.
+        
         :param name: Name of the dataset to retrieve.
         :param kwargs: Additional arguments to pass to the dataset constructor.
         :return: An instance of the dataset.

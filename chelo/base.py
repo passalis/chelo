@@ -2,8 +2,6 @@ from abc import ABC, abstractmethod
 import numpy as np
 
 
-
-
 class CheLoDataset(ABC):
     """
     Abstract Base Class for datasets.
@@ -12,6 +10,7 @@ class CheLoDataset(ABC):
     def __init__(self, selected_features=None, selected_targets=None):
         """
         Initialize the dataset with optional selected features and targets.
+
         :param selected_features: List of features to select (default: all).
         :param selected_targets: List of targets to select (default: all).
         """
@@ -55,6 +54,7 @@ class CheLoDataset(ABC):
     def select_features(self, feature_names):
         """
         Dynamically select features from the dataset.
+
         :param feature_names: List of feature names to select.
         """
         if not self.raw_features:
@@ -64,6 +64,7 @@ class CheLoDataset(ABC):
     def select_targets(self, target_names):
         """
         Dynamically select targets from the dataset.
+
         :param target_names: List of target names to select.
         """
         if not self.raw_targets:
@@ -93,6 +94,7 @@ class CheLoDataset(ABC):
     def statistics(self):
         """
         Compute basic statistics for the features and targets.
+
         :return: A dictionary of statistics (mean, std, min, max) for each feature and target.
         """
         stats = {}
@@ -108,6 +110,7 @@ class CheLoDataset(ABC):
     def to_numpy(self):
         """
         Convert the dataset to numpy arrays.
+
         :return: Tuple of (features, targets) in numpy format.
         """
         return np.array(list(self.features.values())).T, np.array(list(self.targets.values())).T
@@ -115,6 +118,7 @@ class CheLoDataset(ABC):
     def to_pytorch(self):
         """
         Provide a PyTorch Dataset object.
+
         :return: A PyTorch Dataset containing features and targets.
         """
         from torch.utils.data import Dataset
@@ -135,6 +139,7 @@ class CheLoDataset(ABC):
     def to_keras(self, batch_size=32):
         """
         Provide a Keras Sequence object for training.
+
         :param batch_size: Number of samples per batch.
         :return: A Keras Sequence containing features and targets.
         """
@@ -158,9 +163,12 @@ class CheLoDataset(ABC):
     def preview(self, n=5):
         """
         Preview the first n rows of the dataset.
+
+        :return: A dictionary with the first few rows.
         """
         preview_data = {
             "features": {key: values[:n] for key, values in self.features.items()},
             "targets": {key: values[:n] for key, values in self.targets.items()},
         }
+        print(preview_data)
         return preview_data
