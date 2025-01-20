@@ -1,8 +1,6 @@
 import pytest
-import os
-import numpy as np
 from chelo.base import CheLoDataset
-from chelo.utils.downloader import DatasetDownloader
+
 
 # Mock Base Class Implementation for Testing
 class MockDataset(CheLoDataset):
@@ -31,6 +29,7 @@ class MockDataset(CheLoDataset):
             "size": self.size(),
         }
 
+
 # Test Cases for Base Class
 def test_mock_dataset():
     dataset = MockDataset(selected_features=["Temperature"], selected_targets=["Reaction Rate"])
@@ -45,6 +44,7 @@ def test_mock_dataset():
     features, targets = dataset.to_numpy()
     assert features.shape == (3, 1)
     assert targets.shape == (3, 1)
+
 
 if __name__ == "__main__":
     pytest.main()

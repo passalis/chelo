@@ -5,6 +5,7 @@ from tqdm import tqdm
 import tarfile
 import zipfile
 
+
 class DatasetDownloader:
     """
     Utility class for downloading and caching datasets.
@@ -18,7 +19,6 @@ class DatasetDownloader:
         user_dir = os.path.expanduser(os.path.join("~", ".chelo_datasets"))
         self.cache_dir = cache_dir or os.getenv("CHELO_DATASET_CACHE", user_dir)
         os.makedirs(self.cache_dir, exist_ok=True)
-
 
     def _get_dataset_dir(self, dataset_name):
         """
@@ -77,7 +77,8 @@ class DatasetDownloader:
 
         # Verify checksum
         if checksum and not self._verify_checksum(file_path, checksum):
-            raise ValueError(f"Checksum verification failed for '{filename}'. Try re-downloading the file. If the issue please open an issue at https://github.com/passalis/chelo")
+            raise ValueError(f"Checksum verification failed for '{filename}'. Try re-downloading the file. "
+                             f"If the issue please open an issue at https://github.com/passalis/chelo")
 
         print(f"File downloaded and saved at '{file_path}'.")
         return file_path
@@ -93,7 +94,6 @@ class DatasetDownloader:
         with open(file_path, "rb") as file:
             file_hash = hash_func(file.read()).hexdigest()
         return file_hash == checksum
-
 
 
 def extract_file(file_path, extract_to=None):

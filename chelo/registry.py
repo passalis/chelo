@@ -28,7 +28,7 @@ class DatasetRegistry:
     def get_dataset(cls, name, **kwargs):
         """
         Retrieve an instance of the specified dataset by name.
-        
+
         :param name: Name of the dataset to retrieve.
         :param kwargs: Additional arguments to pass to the dataset constructor.
         :return: An instance of the dataset.

@@ -122,6 +122,7 @@ class CheLoDataset(ABC):
         :return: A PyTorch Dataset containing features and targets.
         """
         from torch.utils.data import Dataset
+
         class PyTorchDataset(Dataset):
             def __init__(self, features, targets):
                 self.features = features
@@ -144,6 +145,7 @@ class CheLoDataset(ABC):
         :return: A Keras Sequence containing features and targets.
         """
         from tensorflow.keras.utils import Sequence
+
         class KerasSequence(Sequence):
             def __init__(self, features, targets, batch_size):
                 self.features = np.array(list(features.values())).T

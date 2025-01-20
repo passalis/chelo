@@ -3,18 +3,16 @@ from ..registry import register_dataset
 from ..utils.downloader import DatasetDownloader
 import pandas as pd
 
+
 @register_dataset
 class WineQualityDataset(CheLoDataset):
-
     _BASE_URL = "https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/"
     _FILES = {
         "red": "winequality-red.csv",
-        "white": "winequality-white.csv",
-    }
-    _CHECKSUMS ={
+        "white": "winequality-white.csv"}
+    _CHECKSUMS = {
         "red": "2daeecee174368f8a33b82c8cccae3a5",
-        "white": "5d9ff0f7f716dace19e3ab4578775fd7",
-    }
+        "white": "5d9ff0f7f716dace19e3ab4578775fd7", }
 
     def __init__(self, wine_type="red", selected_features=None, selected_targets=None):
         """
