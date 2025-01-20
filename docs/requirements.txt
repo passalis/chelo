@@ -1,2 +1,6 @@
 sphinxcontrib-bibtex
 sphinx-rtd-theme
+numpy
+pandas
+tqdm
+requests
