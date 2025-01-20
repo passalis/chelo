@@ -1,5 +1,17 @@
 # CheLo (Chemical Engineering Dataset Loader) Library
 
+
+
+<div align="center">
+
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Test Status (master)](https://github.com/passalis/chelo/actions/workflows/ci_master.yml/badge.svg)](https://github.com/passalis/chelo/actions/workflows/ci_master.yml)
+[![CodeFactor](https://www.codefactor.io/repository/github/passalis/chelo/badge)](https://www.codefactor.io/repository/github/passalis/chelo)
+[![codecov](https://codecov.io/github/passalis/chelo/graph/badge.svg?token=BX57HE0KNF)](https://codecov.io/github/passalis/chelo)
+![PyPI](https://img.shields.io/pypi/v/chelo)
+
+<div>
+
 ## Overview
 Loading a dataset is often one of the most challenging parts of building machine learning pipelines, especially for beginners. 
 The **CheLo** Library is a Python library specifically designed to make machine learning more accessible to chemical engineering students, aiding in their learning journey and supporting researchers working on related projects. 
@@ -8,7 +20,7 @@ By providing an easy to use framework, this library simplifies the exploration o
 
 ## Key Features
 - **Dataset Standardization**: Unified API for accessing and exploring datasets.
-- **Multiple Data Formats**: Provides ready to use loaders for numpy, PyTorch, and Keras.
+- **Multiple Data Formats**: Provides ready to use loaders for numpy and PyTorch.
 - **Preprocessing Tools**: Methods for feature/target selection, statistics, and previewing datasets.
 - **Dataset Management**: Automated downloading, caching, and registry of datasets.
 - **Extensibility**: Abstract base class for easy addition of new datasets.
@@ -82,11 +94,6 @@ print("Targets shape:", targets.shape)
 pytorch_dataset = dataset.to_pytorch()
 print("Number of samples in PyTorch Dataset:", len(pytorch_dataset))
 
-# Convert to Keras Sequence
-keras_sequence = dataset.to_keras(batch_size=32)
-for batch_features, batch_targets in keras_sequence:
-    print("Batch Features:", batch_features.shape)
-    print("Batch Targets:", batch_targets.shape)
 ```
 
 ### Dataset Statistics and Preview
