@@ -1,0 +1,3 @@
+sphinxcontrib-bibte
+sphinx-autodoc
+sphinx-rtd-theme
