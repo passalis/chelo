@@ -1,9 +1,9 @@
 
 <div align="center">
 
-<img src="logo.svg" width="300px">
+<img src="logo.svg" width="400px">
 
-<h2>**Chemical Enginering Dataset Loader (CheLo) Library**</h2>
+<h2>Chemical Enginering Dataset Loader (CheLo) Library</h2>
 
 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
