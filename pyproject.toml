@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"chelo" = "src"}
+
+[project]
+name = "chelo"
+version = "0.0.1"
+description = "Chemical Engineering Dataset Loader Library"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+    { name = "Nikolaos Passalis", email = "passalis@auth.gr" }
+]
+dependencies = [
+    "numpy",
+    "pandas",
+    "tqdm",
+    "requests",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
