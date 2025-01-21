@@ -211,6 +211,8 @@ Contributions are welcome! To contribute:
 ## Disclaimer
 I am not associated with any of the datasets provided in this library, nor do I host them. 
 The CheLo Library solely provides tools to facilitate the downloading and loading of publicly available datasets to enhance accessibility for educational and research purposes. 
+Users are responsible for ensuring their use complies with the datasets' licenses and terms of use. 
+Please refer to the original dataset provider for license details.
 If you have any concerns, including removal requests or any other inquiries, please feel free to contact [me](https://people.auth.gr/passalis/) directly.
 
 
