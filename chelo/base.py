@@ -76,6 +76,22 @@ class CheLoDataset(ABC):
             raise ValueError(f"Dataset {self.dataset_name} not loaded yet!")
         self.targets = {name: self.raw_targets[name] for name in target_names}
 
+    def selected_features(self):
+        """
+        Returns a list of feature names selected.
+
+        :return: List of feature names.
+        """
+        return self._selected_features
+
+    def selected_targets(self):
+        """
+        Returns a list of target names selected.
+
+        :return: List of target names.
+        """
+        return self._selected_targets
+
     def _apply_initial_selections(self) -> None:
         """
         Apply initial selections if specified during initialization.

@@ -1,9 +1,8 @@
 import os
-import hashlib
 import requests
 from tqdm import tqdm
 from typing import Optional
-
+from ..utils.checksum import verify_checksum
 
 class DatasetDownloader:
     """
@@ -15,8 +14,8 @@ class DatasetDownloader:
         Initialize the downloader with an optional cache directory.
         :param cache_dir: Directory to store downloaded datasets
         """
-        user_dir: str = os.path.expanduser(os.path.join("~", ".chelo_datasets"))
-        self.cache_dir: str = cache_dir or os.getenv("CHELO_DATASET_CACHE", user_dir)
+        user_dir: str = os.path.expanduser(os.path.join("~", ".chelo"))
+        self.cache_dir: str = cache_dir or os.getenv("CHELO_DATASET_PATH", user_dir)
         os.makedirs(self.cache_dir, exist_ok=True)
 
     def _get_dataset_dir(self, dataset_name: str) -> str:
@@ -59,7 +58,7 @@ class DatasetDownloader:
 
         # Check if the file already exists
         if os.path.exists(file_path):
-            if checksum and not self._verify_checksum(file_path, checksum):
+            if checksum and not verify_checksum(file_path, checksum):
                 print("Checksum mismatch! Redownloading the file.")
             else:
                 return file_path
@@ -81,7 +80,7 @@ class DatasetDownloader:
                 progress.update(len(chunk))
 
         # Verify checksum
-        if checksum and not self._verify_checksum(file_path, checksum):
+        if checksum and not verify_checksum(file_path, checksum):
             raise ValueError(
                 f"Checksum verification failed for '{filename}'. Try re-downloading the file. "
                 f"If the issue persists, please open an issue at https://github.com/passalis/chelo"
@@ -90,14 +89,3 @@ class DatasetDownloader:
         print(f"File downloaded and saved at '{file_path}'.")
         return file_path
 
-    def _verify_checksum(self, file_path: str, checksum: str) -> bool:
-        """
-        Verify the checksum of a file.
-        :param file_path: Path to the file.
-        :param checksum: Expected checksum (MD5 or SHA256).
-        :return: True if the checksum matches, False otherwise.
-        """
-        hash_func = hashlib.sha256 if len(checksum) == 64 else hashlib.md5
-        with open(file_path, "rb") as file:
-            file_hash: str = hash_func(file.read()).hexdigest()
-        return file_hash == checksum
