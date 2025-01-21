@@ -29,7 +29,8 @@ class CoalFiredPlantDataset(CheLoDataset):
         """
         super().__init__(selected_features, selected_targets)
         self.dataset_name: str = "Coal Fired Power Plant Thermal Performance Dataset"
-        self.dataset_url: str = "https://www.kaggle.com/datasets/ainalirham/coal-fired-power-plant-thermal-performance-dataset"
+        self.dataset_url: str = ("https://www.kaggle.com/datasets/ainalirham/"
+                                 "coal-fired-power-plant-thermal-performance-dataset")
 
     def load_data(self) -> None:
         """
