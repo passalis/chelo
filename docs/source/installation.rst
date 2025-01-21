@@ -14,3 +14,5 @@ To install the library for development:
    git clone https://github.com/your-repo/chelo.git
    cd chelo
    pip install -e .
+
+Note that for some datasets further configuration might be needed after installation (see :ref:`configuration-guide`).
