@@ -7,6 +7,7 @@
 
 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Documentation](https://readthedocs.org/projects/chelo/badge/?version=latest)](https://readthedocs.org/projects/chelo/badge/?version=latest)
 [![Test Status (master)](https://github.com/passalis/chelo/actions/workflows/ci_master.yml/badge.svg)](https://github.com/passalis/chelo/actions/workflows/ci_master.yml)
 [![CodeFactor](https://www.codefactor.io/repository/github/passalis/chelo/badge)](https://www.codefactor.io/repository/github/passalis/chelo)
 [![codecov](https://codecov.io/github/passalis/chelo/graph/badge.svg?token=BX57HE0KNF)](https://codecov.io/github/passalis/chelo)
@@ -18,6 +19,7 @@
 Loading a dataset is often one of the most challenging parts of building machine learning pipelines, especially for beginners. 
 The **CheLo** Library is a Python library specifically designed to make machine learning more accessible to chemical engineering students, aiding in their learning journey and supporting researchers working on related projects. 
 By providing an easy to use framework, this library simplifies the exploration of data-driven modeling, empowering users to access, manage, and utilize chemical engineering datasets for machine learning and statistical analysis with ease.
+Check the [CheLo's documentation](https://chelo.readthedocs.io/en/latest/) for detailed usage instructions.
 
 
 ## Key Features
