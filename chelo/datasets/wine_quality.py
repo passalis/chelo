@@ -35,6 +35,7 @@ class WineQualityDataset(CheLoDataset):
             raise ValueError(f"Invalid wine_type '{wine_type}'. Must be 'red' or 'white'.")
         self.wine_type: str = wine_type
         self.dataset_name: str = f"Wine Quality ({wine_type.capitalize()})"
+        self.dataset_url: str = "https://archive.ics.uci.edu/dataset/186/wine+quality"
 
     def load_data(self) -> None:
         """
@@ -84,4 +85,5 @@ class WineQualityDataset(CheLoDataset):
             "wine_type": self.wine_type,
             "features": self.list_features(),
             "targets": self.list_targets(),
+            "url": self.dataset_url
         }

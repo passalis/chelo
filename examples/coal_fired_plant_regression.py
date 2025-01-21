@@ -2,11 +2,9 @@ from chelo import DatasetRegistry
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
-from chelo.utils import kaggle_downloader
+
 # Load and prepare the dataset
-# dataset = DatasetRegistry.get_dataset("CoalFiredPlantDataset")
-from chelo.datasets.coal_fired_plant import CoalFiredPlantDataset
-dataset = CoalFiredPlantDataset()
+dataset = DatasetRegistry.get_dataset("CoalFiredPlantDataset")
 dataset.load_data()
 
 print("Available features: ", dataset.list_features())

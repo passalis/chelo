@@ -29,10 +29,10 @@ Check the [CheLo's documentation](https://chelo.readthedocs.io/en/latest/) for d
 - **Dataset Management**: Automated downloading, caching, and registry of datasets.
 - **Extensibility**: Abstract base class for easy addition of new datasets.
 
-## Disclaimer
-I am not associated with any of the datasets provided in this library, nor do I host them. 
-The CheLo Library solely provides tools to facilitate the downloading and loading of publicly available datasets to enhance accessibility for educational and research purposes. 
-If you have any concerns, including removal requests or any other inquiries, please feel free to contact [me](https://people.auth.gr/passalis/) directly.
+
+## Datasets 
+**CheLo** currently supports 2 datasets. You can find a list of the supported datasets [here](DATASETS.md).
+
 
 ## Installation
 
@@ -207,6 +207,12 @@ Contributions are welcome! To contribute:
 2. Create a feature branch.
 3. Implement your changes and add tests.
 4. Submit a pull request with a detailed description of your changes.
+
+## Disclaimer
+I am not associated with any of the datasets provided in this library, nor do I host them. 
+The CheLo Library solely provides tools to facilitate the downloading and loading of publicly available datasets to enhance accessibility for educational and research purposes. 
+If you have any concerns, including removal requests or any other inquiries, please feel free to contact [me](https://people.auth.gr/passalis/) directly.
+
 
 ## License
 
