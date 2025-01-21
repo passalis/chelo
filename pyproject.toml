@@ -19,7 +19,7 @@ dependencies = [
     "pandas",
     "tqdm",
     "requests",
-    "kaggle"
+    "kaggle",
     "openpyxl"
 ]
 classifiers = [
