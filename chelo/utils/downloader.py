@@ -4,6 +4,7 @@ from tqdm import tqdm
 from typing import Optional
 from ..utils.checksum import verify_checksum
 
+
 class DatasetDownloader:
     """
     Utility class for downloading and caching datasets.
@@ -88,4 +89,3 @@ class DatasetDownloader:
 
         print(f"File downloaded and saved at '{file_path}'.")
         return file_path
-

@@ -1,11 +1,6 @@
 from typing import Optional
-from . import _chelo_configuration
-import hashlib
 import os
 from ..utils.checksum import verify_checksum
-# Export Kaggle environment variables (this should be done before importing kaggle)
-os.environ["KAGGLE_USERNAME"] = _chelo_configuration.get("kaggle_username")
-os.environ["KAGGLE_KEY"] = _chelo_configuration.get("kaggle_key")
 from kaggle.api.kaggle_api_extended import KaggleApi
 
 
