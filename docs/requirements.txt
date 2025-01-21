@@ -4,3 +4,5 @@ numpy
 pandas
 tqdm
 requests
+kaggle
+openpyxl

@@ -7,6 +7,7 @@ Welcome to chelo’s Documentation!
 
    introduction
    installation
+   configuration
    usage
    datasets
    api_reference
