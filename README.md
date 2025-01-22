@@ -81,8 +81,7 @@ print("Number of samples in PyTorch Dataset:", len(pytorch_dataset))
 
 ```
 
-
-## Configuration and Dataset Path Setup
+## Configuration 
 
 By default, the CheLo library stores datasets in the directory `~/.chelo` (in the user's home directory). 
 This default path can be customized by setting the `CHELO_DATASETS_PATH` environment variable. 
@@ -120,24 +119,6 @@ Follow these steps:
     "kaggle_key": "your_kaggle_key"
 }
 ```
-
-### Customizing the Dataset Path
-If you want to store your datasets in a different directory, you can set the `CHELO_DATASETS_PATH` environment variable to your preferred directory. The CheLo library will use this path for dataset storage instead of the default location.
-
-To set the CHELO_DATASETS_PATH environment variable:
-
-On Linux/macOS (using Bash):
-```bash
-export CHELO_DATASETS_PATH="/path/to/your/datasets"
-```
-
-On Windows (Command Prompt):
-```bash
-set CHELO_DATASETS_PATH=C:\path\to\your\datasets
-```
-Once the environment variable is set, CheLo will use the specified directory for storing datasets.
-
-
 
 ## Extending the Library
 
