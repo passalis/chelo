@@ -6,10 +6,10 @@ import pandas as pd
 
 
 @register_dataset
-class BCFactorDataset(CheLoDataset):
-    _URL: str = "https://raw.githubusercontent.com/edgarsmdn/MLCE_book/main/references/BCF_training.csv"
-    _FILE_NAME: str = "BCF_training.csv"
-    _CHECKSUM: str = "bcf4ea5fa670952cbead1dd9b3091028"
+class VaporPressureDataset(CheLoDataset):
+    _URL: str = "https://raw.githubusercontent.com/edgarsmdn/MLCE_book/main/references/Vapor_pressures.csv"
+    _FILE_NAME: str = "Vapor_pressures.csv"
+    _CHECKSUM: str = "ed5b1229e13b8ebd82c3a047520bf328"
 
     def __init__(
         self,
@@ -17,33 +17,34 @@ class BCFactorDataset(CheLoDataset):
         selected_targets: Optional[List[str]] = None,
     ) -> None:
         """
-        Initialize the Ames Mutagenicity dataset
+        Initialize the VaporPressureDataset Dataset
 
         :param selected_features: Features to select (default: all).
         :param selected_targets: Targets to select (default: all).
         """
         super().__init__(selected_features, selected_targets)
 
-        self.dataset_name: str = "Bioconcentration Factor (BCF) Dataset"
-        self.dataset_url: str = "https://edgarsmdn.github.io/MLCE_book/02_kNN_QSPR.html"
+        self.dataset_name: str = "Vapor Pressure Dataset"
+        self.dataset_url: str = "https://edgarsmdn.github.io/MLCE_book/04_DNN_VLE.html"
 
     def load_data(self) -> None:
         """
-        Load the dataset.
+        Load the VLEDataset dataset.
         """
         downloader: DatasetDownloader = DatasetDownloader()
         file_path: str = downloader.download(
             self._URL,
-            dataset_name="bcf",
+            dataset_name="vapor_pressures",
             filename=self._FILE_NAME,
             checksum=self._CHECKSUM,
         )
 
-        data: pd.DataFrame = pd.read_csv(file_path, sep=",")
 
-        self.raw_features: Dict[str, List[Union[int, float]]] = data.drop(columns=['CAS',
-                        'SMILES', 'Experimental value [log(L/kg)]'], axis=1).to_dict(orient="list")
-        self.raw_targets: Dict[str, List[int]] = {"bcf": data["Experimental value [log(L/kg)]"].tolist()}
+        data: pd.DataFrame = pd.read_csv(file_path, sep=",")
+        data = data.dropna()
+
+        self.raw_features: Dict[str, List[Union[int, float]]] = data.drop(columns=['Pvap'], axis=1).to_dict(orient="list")
+        self.raw_targets: Dict[str, List[int]] = {"p_vap": data["Pvap"].tolist()}
         self._apply_initial_selections()
 
     def list_features(self) -> List[str]:
@@ -70,7 +71,7 @@ class BCFactorDataset(CheLoDataset):
         """
         return {
             "name": self.dataset_name,
-            "description": "Dataset containing chemical properties and experimental bioconcentration factor (BCF).",
+            "description": "Dataset containing the phase envelope of various compounds.",
             "features": self.list_features(),
             "targets": self.list_targets(),
             "url": self.dataset_url

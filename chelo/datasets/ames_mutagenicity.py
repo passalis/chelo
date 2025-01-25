@@ -31,7 +31,7 @@ class AmesMutagenicityDataset(CheLoDataset):
 
     def load_data(self) -> None:
         """
-        Load the dataset from the UCI repository or cache.
+        Load the dataset.
         """
         downloader: DatasetDownloader = DatasetDownloader()
         file_path: str = downloader.download(
