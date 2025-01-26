@@ -17,7 +17,7 @@ class VaporPressureDataset(CheLoDataset):
         selected_targets: Optional[List[str]] = None,
     ) -> None:
         """
-        Initialize the VaporPressureDataset Dataset
+        Initialize the VaporPressureDataset Dataset.
 
         :param selected_features: Features to select (default: all).
         :param selected_targets: Targets to select (default: all).
@@ -29,22 +29,23 @@ class VaporPressureDataset(CheLoDataset):
 
     def load_data(self) -> None:
         """
-        Load the VLEDataset dataset.
+        Load the VaporPressureDataset dataset.
         """
-        downloader: DatasetDownloader = DatasetDownloader()
-        file_path: str = downloader.download(
+        downloader = DatasetDownloader()
+        file_path = downloader.download(
             self._URL,
             dataset_name="vapor_pressures",
             filename=self._FILE_NAME,
             checksum=self._CHECKSUM,
         )
 
+        try:
+            data = pd.read_csv(file_path, sep=",").dropna()
+        except Exception as e:
+            raise RuntimeError(f"Error loading data from {file_path}: {e}")
 
-        data: pd.DataFrame = pd.read_csv(file_path, sep=",")
-        data = data.dropna()
-
-        self.raw_features: Dict[str, List[Union[int, float]]] = data.drop(columns=['Pvap'], axis=1).to_dict(orient="list")
-        self.raw_targets: Dict[str, List[int]] = {"p_vap": data["Pvap"].tolist()}
+        self.raw_features = data.drop(columns=["Pvap"], axis=1).to_dict(orient="list")
+        self.raw_targets = {"p_vap": data["Pvap"].tolist()}
         self._apply_initial_selections()
 
     def list_features(self) -> List[str]:
@@ -74,5 +75,5 @@ class VaporPressureDataset(CheLoDataset):
             "description": "Dataset containing the phase envelope of various compounds.",
             "features": self.list_features(),
             "targets": self.list_targets(),
-            "url": self.dataset_url
+            "url": self.dataset_url,
         }

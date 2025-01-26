@@ -1,11 +1,10 @@
-from typing import List, Dict, Optional, Union
-
-
+from typing import Sequence, Dict, Optional, Union, List
 from ..base import CheLoDataset
 from ..registry import register_dataset
 from ..utils.downloader import DatasetDownloader
 import pandas as pd
 import numpy as np
+
 
 @register_dataset
 class CSTRDataset(CheLoDataset):
@@ -14,28 +13,27 @@ class CSTRDataset(CheLoDataset):
     _CHECKSUM: str = "757f3928146122c37efe3fa1bd67a5db"
 
     def __init__(
-        self,
-        selected_features: Optional[List[str]] = None,
-        selected_targets: Optional[List[str]] = None,
-        window: Optional[int] = None,
+            self,
+            selected_features: Optional[Sequence[str]] = None,
+            selected_targets: Optional[Sequence[str]] = None,
+            window: Optional[int] = None,
     ) -> None:
         """
-        Initialize the CSTRDataset dataset.
-        The dataset contains the concentrations of three species (A, B and X) through time.
+        Initialize the CSTR Dataset.
+
+        The dataset contains the concentrations of three species (A, B, and X) over time.
         The inlet concentrations are fixed.
 
-        :param selected_features: Features to select (default: all).
-        :param selected_targets: Targets to select (default: all).
-        :param window: Defines how many previous time-steps to include (default: all).
+        :param selected_features: Features to select (default: all features).
+        :param selected_targets: Targets to select (default: all targets).
+        :param window: Number of previous time-steps to include in each feature (default: 1).
         """
         super().__init__(selected_features, selected_targets)
 
         self.dataset_name: str = "CSTR Dataset"
         self.dataset_url: str = "https://edgarsmdn.github.io/MLCE_book/05_Hybrid_CSTR.html"
-        if window is None:
-            window = 1
-        self.window_size: int = window
-        self._data_type = 'timeseries'
+        self.window_size: int = window if window is not None else 1
+        self._data_type: str = "timeseries"
 
     def load_data(self) -> None:
         """
@@ -49,7 +47,6 @@ class CSTRDataset(CheLoDataset):
             checksum=self._CHECKSUM,
         )
 
-
         data: pd.DataFrame = pd.read_csv(file_path, sep=";")
         data = data.dropna()
         self.raw_targets: Dict[str, List[Union[int, float]]] = data.iloc[self.window_size:, :].to_dict(orient="list")
@@ -61,32 +58,35 @@ class CSTRDataset(CheLoDataset):
             self.raw_features[feature_name] = X
         self._apply_initial_selections()
 
-    def list_features(self) -> List[str]:
+    def list_features(self) -> Sequence[str]:
         """
         List the available features in the dataset.
 
-        :return: List of feature names.
+        :return: A list of feature names.
         """
         return list(self.raw_features.keys())
 
-    def list_targets(self) -> List[str]:
+    def list_targets(self) -> Sequence[str]:
         """
         List the available targets in the dataset.
 
-        :return: List of target names.
+        :return: A list of target names.
         """
         return list(self.raw_targets.keys())
 
-    def get_dataset_info(self) -> Dict[str, Union[str, List[str]]]:
+    def get_dataset_info(self) -> Dict[str, Union[str, Sequence[str]]]:
         """
-        Get metadata about the dataset.
+        Retrieve metadata about the dataset.
 
         :return: A dictionary containing dataset metadata.
         """
         return {
             "name": self.dataset_name,
-            "description": "Dataset containing the phase envelope of various compounds.",
+            "description": (
+                "Dataset containing concentrations of three species (A, B, and X) "
+                "in a continuous stirred-tank reactor (CSTR) over time."
+            ),
             "features": self.list_features(),
             "targets": self.list_targets(),
-            "url": self.dataset_url
+            "url": self.dataset_url,
         }
