@@ -162,10 +162,6 @@ class CheLoDataset(ABC):
         if not self.features or not self.targets:
             raise ValueError("Dataset is not loaded or selections are not applied.")
 
-        # Retrieve feature and target names
-        feature_names = self.list_features()
-        target_names = self.list_targets()
-
         # Convert features and targets to DataFrames
         features_df = pd.DataFrame(self.features, columns=self._selected_features)
         targets_df = pd.DataFrame(self.targets, columns=self._selected_targets)
