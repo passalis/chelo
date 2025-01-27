@@ -1,13 +1,13 @@
 
 <div align="center">
 
-<img src="logo.svg" width="400px">
+<img src="[logo.svg](https://raw.githubusercontent.com/passalis/chelo/main/logo.svg)" width="400px">
 
 <h2>Chemical Engineering Dataset Loader (CheLo) Library</h2>
 
 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Documentation](https://readthedocs.org/projects/chelo/badge/?version=latest)](https://readthedocs.org/projects/chelo/badge/?version=latest)
+[![Documentation](https://readthedocs.org/projects/chelo/badge/?version=latest)](https://chelo.readthedocs.io/en/latest/)
 [![Test Status (master)](https://github.com/passalis/chelo/actions/workflows/ci_master.yml/badge.svg)](https://github.com/passalis/chelo/actions/workflows/ci_master.yml)
 [![CodeFactor](https://www.codefactor.io/repository/github/passalis/chelo/badge)](https://www.codefactor.io/repository/github/passalis/chelo)
 [![codecov](https://codecov.io/github/passalis/chelo/graph/badge.svg?token=BX57HE0KNF)](https://codecov.io/github/passalis/chelo)
@@ -104,73 +104,13 @@ For some datasets credentials mights be needed to download datasets.
 The CheLo library uses a ``chelo.json`` configuration file to store such settings (this file exists under the path set in  `CHELO_DATASETS_PATH`).
 If the configuration file does not exist, it will be automatically created with a default structure.
 
-## Extending the Library
-
-To add a new dataset, create a new class that inherits from `ChemicalEngineeringDataset` and implement the required methods:
-
-1. **Create a new dataset module:**
-
-```plaintext
-chelo/datasets/my_new_dataset.py
-```
-
-2. **Implement the dataset class:**
-
-```python
-from ..base import ChemicalEngineeringDataset
-
-@register_dataset
-class MyNewDataset(ChemicalEngineeringDataset):
-    def __init__(self, selected_features=None, selected_targets=None):
-        super().__init__(selected_features, selected_targets)
-        self.dataset_name = "My New Dataset"
-
-    def load_data(self):
-        # Load dataset into self.raw_features and self.raw_targets
-        pass
-
-    def list_features(self):
-        return list(self.raw_features.keys())
-
-    def list_targets(self):
-        return list(self.raw_targets.keys())
-
-    def get_dataset_info(self):
-        return {"name": self.dataset_name, "description": "Description of the dataset."}
-```
-
-
-### Dataset Registry
-
-The registry dynamically manages available datasets, allowing users to list and retrieve datasets by name.
-
-#### Example Usage
-
-```python
-from chelo.registry import DatasetRegistry
-
-# List all registered datasets
-print("Available Datasets:", DatasetRegistry.list_datasets())
-
-# Retrieve a dataset by name
-dataset = DatasetRegistry.get_dataset("WineQualityDataset", wine_type="white")
-```
-
-## Testing
-
-The library includes comprehensive unit tests to ensure correctness and reliability. Run tests using `pytest`:
-
-```bash
-pytest tests/
-```
-
 ## Contributing
 
 Contributions are welcome! To contribute:
 
 1. Fork the repository.
 2. Create a feature branch.
-3. Implement your changes and add tests.
+3. Implement your changes and add tests. 
 4. Submit a pull request with a detailed description of your changes.
 
 ## Disclaimer
