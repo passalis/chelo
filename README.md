@@ -1,7 +1,7 @@
 
 <div align="center">
 
-<img src="[logo.svg](https://raw.githubusercontent.com/passalis/chelo/main/logo.svg)" width="400px">
+<img src="https://raw.githubusercontent.com/passalis/chelo/main/logo.svg" width="400px">
 
 <h2>Chemical Engineering Dataset Loader (CheLo) Library</h2>
 
@@ -11,7 +11,7 @@
 [![Test Status (master)](https://github.com/passalis/chelo/actions/workflows/ci_master.yml/badge.svg)](https://github.com/passalis/chelo/actions/workflows/ci_master.yml)
 [![CodeFactor](https://www.codefactor.io/repository/github/passalis/chelo/badge)](https://www.codefactor.io/repository/github/passalis/chelo)
 [![codecov](https://codecov.io/github/passalis/chelo/graph/badge.svg?token=BX57HE0KNF)](https://codecov.io/github/passalis/chelo)
-![PyPI](https://img.shields.io/pypi/v/chelo)
+[![PyPI](https://img.shields.io/pypi/v/chelo)](https://pypi.org/project/chelo/)
 
 </div>
 
