@@ -28,6 +28,10 @@ class CheLoDataset(ABC):
         self._selected_features: Optional[List[str]] = selected_features
         self._selected_targets: Optional[List[str]] = selected_targets
 
+        # This variable is used when special pre-processing is needed
+        # For example, when set to time-series, it transports the data to ensure consistency
+        self._data_type = None
+
     @abstractmethod
     def load_data(self) -> None:
         """
@@ -140,10 +144,13 @@ class CheLoDataset(ABC):
         """
         if not self.features or not self.targets:
             raise ValueError("Dataset is not loaded or selections are not applied.")
-        return (
-            np.array(list(self.features.values())).T,
-            np.array(list(self.targets.values())).T
-        )
+
+        X = np.array(list(self.features.values())).T
+        y = np.array(list(self.targets.values())).T
+        if self._data_type == 'timeseries':
+            X = X.transpose(1, 0, 2)
+
+        return (X, y)
 
     def to_pytorch(self):
         """
