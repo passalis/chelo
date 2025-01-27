@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List, Dict, Any, Optional, Tuple
 import numpy as np
+import pandas as pd
 
 
 class CheLoDataset(ABC):
@@ -151,6 +152,24 @@ class CheLoDataset(ABC):
             X = X.transpose(1, 0, 2)
 
         return (X, y)
+
+    def to_pandas(self) -> pd.DataFrame:
+        """
+        Convert the dataset to a single pandas DataFrame with both features and targets.
+
+        :return: A pandas DataFrame containing both features and targets.
+        """
+        if not self.features or not self.targets:
+            raise ValueError("Dataset is not loaded or selections are not applied.")
+
+        # Convert features and targets to DataFrames
+        features_df = pd.DataFrame(self.features, columns=self._selected_features)
+        targets_df = pd.DataFrame(self.targets, columns=self._selected_targets)
+
+        # Combine features and targets into a single DataFrame
+        combined_df = pd.concat([features_df, targets_df], axis=1)
+
+        return combined_df
 
     def to_pytorch(self):
         """
