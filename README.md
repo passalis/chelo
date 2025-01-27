@@ -31,7 +31,7 @@ Check the [CheLo's documentation](https://chelo.readthedocs.io/en/latest/) for d
 
 
 ## Datasets 
-**CheLo** currently supports 2 datasets. You can find a list of the supported datasets [here](DATASETS.md).
+**CheLo** currently supports 7 datasets. You can find a list of the supported datasets [here](DATASETS.md).
 
 
 ## Installation
