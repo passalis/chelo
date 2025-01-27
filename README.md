@@ -104,22 +104,6 @@ For some datasets credentials mights be needed to download datasets.
 The CheLo library uses a ``chelo.json`` configuration file to store such settings (this file exists under the path set in  `CHELO_DATASETS_PATH`).
 If the configuration file does not exist, it will be automatically created with a default structure.
 
-including your Kaggle credentials (username and key) and the dataset storage path. 
-
-### Kaggle API Configuration
-For datasets hosted on Kaggle, you’ll need to configure your Kaggle API credentials. 
-Follow these steps:
-
-- Go to https://www.kaggle.com and log in to your account.
-- Generate an API Token: Navigate to your account settings and click the 'Create New API Token' button. This will download a kaggle.json file to your computer, containing your KAGGLE_USERNAME and KAGGLE_KEY.
-- Use the credentials in the kaggle.json file to update your chelo.json configuration file. For example:
-```
-{
-    "kaggle_username": "your_kaggle_username",
-    "kaggle_key": "your_kaggle_key"
-}
-```
-
 ## Extending the Library
 
 To add a new dataset, create a new class that inherits from `ChemicalEngineeringDataset` and implement the required methods:
