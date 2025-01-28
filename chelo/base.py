@@ -190,7 +190,6 @@ class CheLoDataset(ABC):
                 else:
                     assert False, "targets are neither float nor int"
 
-
             def __len__(self) -> int:
                 return len(self.features)
 
