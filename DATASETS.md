@@ -16,3 +16,5 @@ This page lists datasets included in **CheLo**. You can find more details in [Ch
 
 7. [VLE Dataset](https://edgarsmdn.github.io/MLCE_book/04_DNN_VLE.html): This dataset focuses on vapor-liquid equilibria (VLE) of CO2, providing essential information for thermodynamic modeling and process design.
 
+8. [OPSD Dataset](https://open-power-system-data.org/): This dataset focuses on photovoltaic (PV) solar power generation, providing essential information for renewable energy modeling, solar forecasting, and process optimization.
+
