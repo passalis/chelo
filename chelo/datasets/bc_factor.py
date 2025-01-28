@@ -50,22 +50,6 @@ class BCFactorDataset(CheLoDataset):
         }
         self._apply_initial_selections()
 
-    def list_features(self) -> Sequence[str]:
-        """
-        List the available features in the dataset.
-
-        :return: A list of feature names.
-        """
-        return list(self.raw_features.keys())
-
-    def list_targets(self) -> Sequence[str]:
-        """
-        List the available targets in the dataset.
-
-        :return: A list of target names.
-        """
-        return list(self.raw_targets.keys())
-
     def get_dataset_info(self) -> Dict[str, Union[str, Sequence[str]]]:
         """
         Retrieve metadata about the dataset.

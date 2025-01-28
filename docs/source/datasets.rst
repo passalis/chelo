@@ -53,5 +53,16 @@ For more information regarding the dataset refer to `MLCE book <https://edgarsmd
 Please refer to the API reference for options supported by this dataset (:class:`chelo.datasets.VLEDataset`).
 
 
+OPSD Dataset
+------------
+The OPSD Dataset <https://open-power-system-data.org/>_ focuses on power forecasting.
+In this loader we include photovoltaic (PV) solar power generation data, as well as
+critical features such as temperature, radiation (direct and diffuse).
+
+This dataset is particularly useful for applications in energy management, solar power optimization, and predictive modeling of renewable energy resources.
+
+For more information about the dataset, refer to the OPSD documentation <https://open-power-system-data.org/>_.
+Please refer to the API reference for the supported options and usage of this dataset (:class:chelo.datasets.OPSDPVDataset).
+
 .. bibliography::
 

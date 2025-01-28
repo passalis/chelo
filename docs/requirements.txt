@@ -6,3 +6,4 @@ tqdm
 requests
 kaggle
 openpyxl
+joblib
