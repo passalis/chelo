@@ -98,13 +98,12 @@ class OPSDPVDataset(CheLoDataset):
         cache_file_path = os.path.join(cache_dir, "processed_dataset.joblib")
 
         # Check if valid cache exists
-        load_success: bool = False
+        load_success: bool = True
         if os.path.exists(cache_file_path):
             try:
                 df = CacheManager.load_from_cache(cache_file_path)
-                load_success = True
             except Exception:
-                pass
+                load_success = False
 
         if not load_success:
             # Define relevant columns for weather and PV data
