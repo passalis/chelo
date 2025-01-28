@@ -41,20 +41,6 @@ class CheLoDataset(ABC):
         pass
 
     @abstractmethod
-    def list_features(self) -> List[str]:
-        """
-        List available features in the dataset.
-        """
-        pass
-
-    @abstractmethod
-    def list_targets(self) -> List[str]:
-        """
-        List available targets in the dataset.
-        """
-        pass
-
-    @abstractmethod
     def get_dataset_info(self) -> Dict[str, Any]:
         """
         Provide metadata about the dataset (e.g., source, size, description).

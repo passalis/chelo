@@ -28,4 +28,3 @@ class CacheManager:
         """
         with open(cache_path, "rb") as cache_file:
             return pickle.load(cache_file)
-

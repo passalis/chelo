@@ -8,16 +8,6 @@ import numpy as np
 from ..utils.cache_manager import CacheManager
 import os
 
-"""
-    - future weather
-    - add forecasting example
-    
-    
-    - Add readme.md
-    - Add documentation
-
-"""
-
 
 @register_dataset
 class OPSDPVDataset(CheLoDataset):
@@ -51,8 +41,10 @@ class OPSDPVDataset(CheLoDataset):
         Initialize the OPSD PV Dataset.
 
         :param country: The country to use. Must be one of the available countries.
-        :param start_date: The start date of the dataset. Defaults to earliest available data if not provided. Format: YYYY-MM-DD hour:minute:second
-        :param end_date: The end date of the dataset. Defaults to the latest available data if not provided. Format: YYYY-MM-DD hour:minute:second
+        :param start_date: The start date of the dataset. Defaults to earliest available data if not provided.
+            Format: YYYY-MM-DD hour:minute:second
+        :param end_date: The end date of the dataset. Defaults to the latest available data if not provided.
+            Format: YYYY-MM-DD hour:minute:second
         :param historical_window: Number of time steps in the historical window for feature processing.
         :param prediction_horizon: Time steps into the future for prediction targets.
         :param prediction_window: The length of the prediction window.
@@ -111,7 +103,7 @@ class OPSDPVDataset(CheLoDataset):
             try:
                 df = CacheManager.load_from_cache(cache_file_path)
                 load_success = True
-            except Exception as e:
+            except Exception:
                 pass
 
         if not load_success:

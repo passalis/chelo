@@ -71,7 +71,6 @@ class CoalFiredPlantDataset(CheLoDataset):
 
         self._apply_initial_selections()
 
-
     def get_dataset_info(self) -> Dict[str, Union[str, List[str]]]:
         """
         Get metadata about the dataset.

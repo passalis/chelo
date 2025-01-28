@@ -57,8 +57,6 @@ class WineQualityDataset(CheLoDataset):
         self.raw_targets: Dict[str, List[int]] = {"quality": data["quality"].tolist()}
         self._apply_initial_selections()
 
-
-
     def get_dataset_info(self) -> Dict[str, Union[str, List[str]]]:
         """
         Get metadata about the dataset.
