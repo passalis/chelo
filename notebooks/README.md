@@ -54,5 +54,4 @@ Explore the integration of machine learning with first-principles models (e.g., 
 This folder focuses on surrogate modeling techniques for chemical engineering applications, such as:
 - Building fast, approximate models based either on simulation or experimental data
 - Optimization using surrogate models
-- 
 ---
