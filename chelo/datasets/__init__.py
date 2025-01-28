@@ -5,6 +5,7 @@ from .bc_factor import BCFactorDataset
 from .vle import VLEDataset
 from .vapor_pressure import VaporPressureDataset
 from .cstr_dataset import CSTRDataset
+from .opsd_pv_dataset import OPSDPVDataset
 
 __all__ = ['WineQualityDataset', 'CoalFiredPlantDataset', 'AmesMutagenicityDataset', 'BCFactorDataset',
-           'VLEDataset', 'VaporPressureDataset', 'CSTRDataset']
+           'VLEDataset', 'VaporPressureDataset', 'CSTRDataset', 'OPSDPVDataset']

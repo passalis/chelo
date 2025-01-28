@@ -71,21 +71,6 @@ class CoalFiredPlantDataset(CheLoDataset):
 
         self._apply_initial_selections()
 
-    def list_features(self) -> List[str]:
-        """
-        List the available features in the dataset.
-
-        :return: List of feature names.
-        """
-        return list(self.raw_features.keys())
-
-    def list_targets(self) -> List[str]:
-        """
-        List the available targets in the dataset.
-
-        :return: List of target names.
-        """
-        return list(self.raw_targets.keys())
 
     def get_dataset_info(self) -> Dict[str, Union[str, List[str]]]:
         """

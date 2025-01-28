@@ -207,3 +207,11 @@ class CheLoDataset(ABC):
         }
         print(preview_data)
         return preview_data
+
+    def list_features(self) -> List[str]:
+        """Return the list of available features."""
+        return list(self.raw_features.keys())
+
+    def list_targets(self) -> List[str]:
+        """Return the list of available targets."""
+        return list(self.raw_targets.keys())
