@@ -20,7 +20,8 @@ dependencies = [
     "tqdm",
     "requests",
     "kaggle",
-    "openpyxl"
+    "openpyxl",
+    "joblib"
 ]
 classifiers = [
     "Programming Language :: Python :: 3",

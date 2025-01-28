@@ -95,7 +95,7 @@ class OPSDPVDataset(CheLoDataset):
         # Define cache file path
         cache_dir = os.path.join(downloader.cache_dir, "opsd_pv", ".cache")
         os.makedirs(cache_dir, exist_ok=True)
-        cache_file_path = os.path.join(cache_dir, "processed_dataset.pkl")
+        cache_file_path = os.path.join(cache_dir, "processed_dataset.joblib")
 
         # Check if valid cache exists
         load_success: bool = False

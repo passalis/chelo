@@ -1,4 +1,4 @@
-import pickle
+import joblib
 from typing import Any
 
 
@@ -15,8 +15,7 @@ class CacheManager:
         :param data: Data to save.
         :param cache_path: Path to the cache file.
         """
-        with open(cache_path, "wb") as cache_file:
-            pickle.dump(data, cache_file)
+        joblib.dump(data, cache_path)
 
     @staticmethod
     def load_from_cache(cache_path: str) -> Any:
@@ -26,5 +25,4 @@ class CacheManager:
         :param cache_path: Path to the cache file.
         :return: Loaded data.
         """
-        with open(cache_path, "rb") as cache_file:
-            return pickle.load(cache_file)
+        return joblib.load(cache_path)
