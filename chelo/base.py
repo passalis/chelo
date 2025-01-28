@@ -164,11 +164,17 @@ class CheLoDataset(ABC):
         :return: A PyTorch Dataset containing features and targets.
         """
         from torch.utils.data import Dataset
+        import torch
 
         class PyTorchDataset(Dataset):
             def __init__(self, features: np.ndarray, targets: np.ndarray) -> None:
-                self.features = features
-                self.targets = targets
+                self.features = torch.tensor(features, dtype=torch.float32)
+                if issubclass(targets.dtype.type, np.floating):
+                    self.targets = torch.tensor(targets, dtype=torch.float32)
+                elif issubclass(targets.dtype.type, np.integer):
+                    self.targets = torch.tensor(targets, dtype=torch.int64)
+                else:
+                    assert False, "targets are neither float nor int"
 
             def __len__(self) -> int:
                 return len(self.features)
