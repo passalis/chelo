@@ -28,6 +28,8 @@ class CheLoDataset(ABC):
 
         self._selected_features: Optional[List[str]] = selected_features
         self._selected_targets: Optional[List[str]] = selected_targets
+        self._features_shape = None
+        self._targets_shape = None
 
         # This variable is used when special pre-processing is needed
         # For example, when set to time-series, it transports the data to ensure consistency
@@ -47,6 +49,33 @@ class CheLoDataset(ABC):
         """
         pass
 
+    def get_features_shape(self):
+        """
+        Returns the shape of the dataset's feature data.
+
+        :return: Tuple representing the feature data shape.
+        """
+        assert self._features_shape is not None, "Dataset shape is populated upon getting the dataset"
+        return self._features_shape
+
+    def get_target_shape(self):
+        """
+        Returns the shape of the dataset's target data.
+
+        :return: Tuple representing the target data shape.
+        """
+        assert self._targets_shape is not None, "Dataset shape is populated upon getting the dataset"
+        return self._targets_shape
+
+    def __len__(self):
+        """
+        Returns the number of samples in the dataset.
+
+        :return: Integer representing the number of samples.
+        """
+        assert self._features_shape is not None, "Dataset size is populated upon getting the dataset"
+        return self._features_shape[0]
+
     def select_features(self, feature_names: List[str]) -> None:
         """
         Dynamically select features from the dataset.
@@ -57,6 +86,12 @@ class CheLoDataset(ABC):
             raise ValueError(f"Dataset {self.dataset_name} not loaded yet!")
         self.features = {name: self.raw_features[name] for name in feature_names}
 
+        X = np.array(list(self.features.values())).T
+        if self._data_type == 'timeseries':
+            X = X.transpose(1, 0, 2)
+
+        self._features_shape = X.shape
+
     def select_targets(self, target_names: List[str]) -> None:
         """
         Dynamically select targets from the dataset.
@@ -66,6 +101,15 @@ class CheLoDataset(ABC):
         if not self.raw_targets:
             raise ValueError(f"Dataset {self.dataset_name} not loaded yet!")
         self.targets = {name: self.raw_targets[name] for name in target_names}
+
+        # Set the dataset size
+        y = np.array(list(self.targets.values())).T
+
+        if self._data_type == 'timeseries':
+            # Not sure if this is generally ok...
+            if len(y.shape) == 3:
+                y = y.transpose((1, 0, 2))
+        self._targets_shape = y.shape
 
     def selected_features(self):
         """
@@ -134,8 +178,12 @@ class CheLoDataset(ABC):
 
         X = np.array(list(self.features.values())).T
         y = np.array(list(self.targets.values())).T
+
         if self._data_type == 'timeseries':
             X = X.transpose(1, 0, 2)
+            # Not sure if this is generally ok...
+            if len(y.shape) == 3:
+                y = y.transpose((1, 0, 2))
 
         return (X, y)
 
