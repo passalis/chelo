@@ -98,10 +98,11 @@ class OPSDPVDataset(CheLoDataset):
         cache_file_path = os.path.join(cache_dir, "processed_dataset.joblib")
 
         # Check if valid cache exists
-        load_success: bool = True
+        load_success: bool = False
         if os.path.exists(cache_file_path):
             try:
                 df = CacheManager.load_from_cache(cache_file_path)
+                load_success = True
             except Exception:
                 load_success = False
 
@@ -117,7 +118,7 @@ class OPSDPVDataset(CheLoDataset):
                 ]
                 pv_columns.append(f"{country}_solar_generation_actual")
 
-            print("Loading data from source...")
+            print("Preprocessing and caching data (this might take a while)...")
             weather_df = pd.read_csv(file_paths[0])
             pv_df = pd.read_csv(file_paths[1])
 
@@ -208,9 +209,6 @@ class OPSDPVDataset(CheLoDataset):
 
             self.raw_features[feature_name] = processed_features
 
-    def to_numpy(self) -> Tuple[np.ndarray, np.ndarray]:
-        X, y = super().to_numpy()
-        return X, y.transpose((1, 0, 2))
 
     def get_dataset_info(self) -> Dict[str, Union[str, List[str]]]:
         """Return metadata about the dataset."""
