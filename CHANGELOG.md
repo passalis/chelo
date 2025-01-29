@@ -10,3 +10,8 @@
 ## Version 0.0.3
 - 1 additional dataset added
 - API refinements 
+
+## Version 0.0.4
+- Version tag fix 
+
+
