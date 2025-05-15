@@ -7,7 +7,7 @@ package-dir = {"chelo" = "chelo"}
 
 [project]
 name = "chelo"
-version = "0.0.4"
+version = "0.0.5"
 
 description = "Chemical Engineering Dataset Loader Library"
 readme = "README.md"
