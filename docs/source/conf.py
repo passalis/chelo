@@ -9,7 +9,7 @@
 project = 'chelo'
 copyright = '2025, Nikolaos Passalis'
 author = 'Nikolaos Passalis'
-release = '0.0.4'
+release = '0.0.5'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
