@@ -17,5 +17,7 @@
 ## Version 0.0.5
 - Module loading issue fix
 
+## Version 0.0.7
+- Pandas loading fix
 
 
