@@ -46,7 +46,7 @@ class AmesMutagenicityDataset(CheLoDataset):
         ]
 
         self.raw_features: Dict[str, Sequence[Union[int, float]]] = data.drop(
-            columns=columns_to_drop, # axis=1
+            columns=columns_to_drop,
         ).to_dict(orient="list")
         self.raw_targets: Dict[str, Sequence[int]] = {
             "mutagenicity": data["Experimental value"].tolist()

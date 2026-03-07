@@ -44,7 +44,6 @@ class VaporPressureDataset(CheLoDataset):
         except Exception as e:
             raise RuntimeError(f"Error loading data from {file_path}: {e}")
 
-        #self.raw_features = data.drop(columns=["Pvap"], axis=1).to_dict(orient="list")
         self.raw_features = data.drop(columns=["Pvap"]).to_dict(orient="list")
         self.raw_targets = {"p_vap": data["Pvap"].tolist()}
         self._apply_initial_selections()
