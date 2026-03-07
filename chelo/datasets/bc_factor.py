@@ -43,7 +43,7 @@ class BCFactorDataset(CheLoDataset):
         columns_to_drop = ["CAS", "SMILES", "Experimental value [log(L/kg)]"]
 
         self.raw_features: Dict[str, Sequence[Union[int, float]]] = data.drop(
-            columns=columns_to_drop, axis=1
+            columns=columns_to_drop, # axis=1
         ).to_dict(orient="list")
         self.raw_targets: Dict[str, Sequence[float]] = {
             "bcf": data["Experimental value [log(L/kg)]"].tolist()
